@@ -1,3 +1,4 @@
+import Header from "../components/Header";
 import type { NextPage } from "next";
 import Head from 'next/head'
 
@@ -9,6 +10,8 @@ const Product: NextPage = () => {
                 <meta name="description" content="Conheça todos os nossos produtos" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
+            <Header />
 
             <main>
                 <h1>
