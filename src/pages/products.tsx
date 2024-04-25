@@ -1,8 +1,21 @@
-import Header from "../components/Header";
-import type { NextPage } from "next";
+import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import { ReactNode } from 'react'
+import { Container } from 'reactstrap'
+import Header from '../components/Header'
+import ProductsList from '../components/ProductsList'
+import { fetchProducts, ProductType } from '../services/products'
 
-const Product: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+    const products = await fetchProducts()
+    
+    return { props: { products } }
+}
+
+const Products: NextPage = (props: {
+    children?: ReactNode
+    products?: ProductType[]
+}) => {
     return (
         <>
             <Head>
@@ -14,12 +27,16 @@ const Product: NextPage = () => {
             <Header />
 
             <main>
-                <h1>
-                    Nossos Produtos
-                </h1>
+                <Container className="mb-5">
+                    <h1 className="my-5">
+                        Nossos Produtos
+                    </h1>
+
+                    {<ProductsList products={props.products!} />}
+                </Container>
             </main>
         </>
-    );
+    )
 }
 
-export default Product
+export default Products
