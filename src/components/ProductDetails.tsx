@@ -16,12 +16,14 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     return (
         <Row className="pt-5">
             <Col lg={6}>
-                <Image
-                    src={product.imageUrl}
-                    alt={product.name}
-                    height={500}
-                    width={600}
-                />
+                <div className="image-container">
+                    <Image
+                        src={product.imageUrl}
+                        alt={product.name}
+                        layout="fill"
+                        objectFit="contain"
+                    />
+                </div>
             </Col>
 
             <Col lg={6}>
@@ -50,8 +52,17 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
 
                 <SuccessToast toastIsOpen={toastIsOpen} setToastIsOpen={setToastIsOpen} />
             </Col>
+
+            <style jsx>{`
+                .image-container {
+                    position: relative;
+                    width: 80%;
+                    margin: 0 auto;
+                    padding-top: 65%; // 1:1 aspect ratio, adjust as needed
+                }
+            `}</style>
         </Row>
     )
 }
 
-export default ProductDetails
+export default ProductDetails;
