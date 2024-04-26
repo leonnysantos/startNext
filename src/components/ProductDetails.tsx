@@ -14,7 +14,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     const { addProduct } = useCart()
 
     return (
-        <Row>
+        <Row className="pt-5">
             <Col lg={6}>
                 <Image
                     src={product.imageUrl}

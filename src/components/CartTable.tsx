@@ -22,11 +22,12 @@ const CartTableRow = (props: {
                         <Image
                             src={props.entry.product.imageUrl}
                             alt={props.entry.product.name}
-                            height={500}
-                            width={600}
+                            height={40}
+                            width={52}
+                            className="me-3"
                         />
                     </Col>
-                    <Col xs={8} md={10} lg={11}>
+                    <Col xs={8} md={10} lg={11} className="p-3">
                         {props.entry.product.name}
                     </Col>
                 </Row>
